@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        app:titleTextColor="?colorPrimary"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scroll"
+        android:layout_below="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_below="@id/scroll"
+            android:layout_width="match_parent"
+            android:layout_margin="30dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageView
+                android:src="@drawable/logo"
+                android:id="@+id/logo"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="80dp" />
+
+
+            <EditText
+                android:id="@+id/username"
+                android:lines="1"
+                android:singleLine="true"
+                android:maxLines="1"
+                android:hint="Username"
+                android:padding="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/logo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:padding="10dp"
+                android:id="@+id/password"
+                android:hint="Password"
+                android:singleLine="true"
+                android:lines="1"
+                android:maxLines="1"
+                android:inputType="textPassword"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_below="@id/password"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/btn_rounded"
+                android:textColor="@color/white"
+                android:text="Login"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_below="@id/password"
+                android:visibility="gone"
+                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/button"
+                android:layout_marginLeft="20dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:drawableLeft="@drawable/ic_copyright_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:text="Developed by eCareSofTech Pvt. Ltd."
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
