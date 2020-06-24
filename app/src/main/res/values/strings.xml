@@ -13,4 +13,61 @@
     <string name="add_lift">Lift Register</string>
     <string name="lift_list">List Lift</string>
 
+    <string-array name="india_states">
+        <item> AP|Andhra Pradesh</item>
+        <item> AR|Arunachal Pradesh</item>
+        <item>AS|Assam</item>
+        <item>BR|Bihar</item>
+        <item> CT|Chhattisgarh</item>
+        <item> GA|Goa</item>
+        <item> GJ|Gujarat</item>
+        <item> HR|Haryana</item>
+        <item> HP|Himachal Pradesh</item>
+        <item> JK|Jammu and Kashmir</item>
+        <item> JH|Jharkhand</item>
+        <item> KA|Karnataka</item>
+        <item> KL|Kerala</item>
+        <item> MP|Madhya Pradesh</item>
+        <item>   MH|Maharashtra</item>
+        <item>   MN|Manipur</item>
+        <item>  ML|Meghalaya</item>
+        <item>   MZ|Mizoram</item>
+        <item>  NL|Nagaland</item>
+        <item> OR|Odisha</item>
+        <item>  PB|Punjab</item>
+        <item>   RJ|Rajasthan</item>
+        <item>  SK|Sikkim</item>
+        <item>  TN|Tamil Nadu</item>
+        <item>  TG|Telangana</item>
+        <item>  TR|Tripura</item>
+        <item>   UT|Uttarakhand</item>
+        <item>  UP|Uttar Pradesh</item>
+        <item>   WB|West Bengal</item>
+        <item>   AN|Andaman and Nicobar Islands</item>
+        <item>   CH|Chandigarh</item>
+        <item>   DN|Dadra and Nagar Haveli</item>
+        <item>   DD|Daman and Diu</item>
+        <item>   DL|Delhi</item>
+        <item>    LD|Lakshadweep</item>
+        <item>    PY|Puducherry</item>
+    </string-array>
+    
+    <string-array name="field_lift_type">
+        <item>Auto</item>
+        <item>Manual</item>
+    </string-array>
+
+    <string-array name="field_gear_type">
+        <item>Geared</item>
+        <item>Gearless</item>
+    </string-array>
+    <string-array name="field_cons">
+        <item>Mild Steel</item>
+        <item>Stainless Steel</item>
+    </string-array>
+    <string-array name="field_lift">
+        <item>New</item>
+        <item>Old</item>
+    </string-array>
+
 </resources>

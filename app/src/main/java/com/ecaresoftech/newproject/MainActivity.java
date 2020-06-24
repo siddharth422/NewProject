@@ -1,6 +1,8 @@
 package com.ecaresoftech.newproject;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -10,6 +12,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -25,6 +28,17 @@ import android.widget.Toast;
 
 import com.ecaresoftech.newproject.actiitys.Login;
 import com.ecaresoftech.newproject.fragments.DashBoard;
+import com.ecaresoftech.newproject.interfaces.Response_Api;
+import com.ecaresoftech.newproject.services.Api_Client;
+
+import java.nio.charset.Charset;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -33,6 +47,7 @@ public class MainActivity extends AppCompatActivity
     public  static  String role;
     TextView name, Email;
     String decoded_user_id;
+    AlertDialog.Builder alertDialog;
 
 
     @Override
@@ -116,11 +131,33 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_slideshow) {
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.logout) {
+            alertDialog = new AlertDialog.Builder(MainActivity.this);
 
-        } else if (id == R.id.nav_share) {
+            // Setting Dialog Title
+            alertDialog.setTitle("Logout");
+            alertDialog.setIcon(R.drawable.logout);
 
-        } else if (id == R.id.nav_send) {
+            alertDialog.setMessage("Are you sure you want to logout?");
+
+
+            // Setting Positive "Yes" Button
+            alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+
+                    logout();
+
+
+                }
+            });
+            // Setting Negative "NO" Button
+            alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    // Write your code here to invoke NO event
+                    dialog.cancel();
+                }
+            });
+            alertDialog.show();
 
         }
 
@@ -129,6 +166,44 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void logout() {
+        SharedPreferences sharedPreferences=getSharedPreferences("Login",MODE_PRIVATE);
+        String token =sharedPreferences.getString("logouttoken","");
+        // String Copkie=sharedPreferences.getString("sesstion_name","")+"="+sharedPreferences.getString("session_id","");
+        Map<String,String> map=new HashMap<>();
+        map.put("Content-Type",getString(R.string.Content_Type));
+        map.put("logout_token",token);
+
+        Response_Api response_api = Api_Client.getClient(getApplicationContext()).create(Response_Api.class);
+        Call<ResponseBody> call=response_api.Logout("json",map);
+        call.enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.isSuccessful())
+                {
+
+                    SharedPreferences sharedPreferences1=getSharedPreferences("Login",MODE_PRIVATE);
+                    SharedPreferences.Editor editor=sharedPreferences1.edit();
+                    editor.clear();
+                    editor.apply();
+                    startActivity(new Intent(getApplicationContext(),Login.class));
+                    finish();
+
+                }else {
+                    Toast.makeText(getApplicationContext(),response.errorBody().source().buffer().clone().readString(Charset.forName("UTF-8")).toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d("TAG", "Response = " + t.toString());
+                Toast.makeText(getApplicationContext(), t.toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+
+    }
 
 
     private void login() {

@@ -25,9 +25,12 @@ public interface Response_Api {
     Call<LoginResponse> Login(@Query("_format") String value,
                               @HeaderMap HashMap<String, String> hashMap,
                               @Body JsonObject jsonObject);
-    @POST
-    Call<ResponseBody> Logout(@Url String url,
+
+    @POST("/web/user/logout")
+    Call<ResponseBody> Logout(@Query("_format") String value,
                               @HeaderMap Map<String, String> map);
+
+
 
 
 }
