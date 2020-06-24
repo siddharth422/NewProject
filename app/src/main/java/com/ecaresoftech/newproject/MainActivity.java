@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -57,7 +58,16 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View viewHeaderView= navigationView.getHeaderView(0);
+        ImageView imageView=viewHeaderView.findViewById(R.id.profilepic);
+        TextView usernameheader=viewHeaderView.findViewById(R.id.name);
+        TextView useremailheader=viewHeaderView.findViewById(R.id.email);
         navigationView.setNavigationItemSelectedListener(this);
+        sharedPreferences=getSharedPreferences("Login", MODE_PRIVATE);
+        username=sharedPreferences.getString("username","");
+        decoded_user_id=sharedPreferences.getString("user_id","");
+        usernameheader.setText(username);
+        useremailheader.setText(decoded_user_id);
 
         login();
     }
@@ -125,6 +135,7 @@ public class MainActivity extends AppCompatActivity
         if (username.equals("")) {
             Intent intent = new Intent(getApplicationContext(), Login.class);
             startActivity(intent);
+            finish();
         } else {
             /*startActivity(new Intent(getApplicationContext(), TabLayout_Leads.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             finish();*/
