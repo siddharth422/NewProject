@@ -84,10 +84,10 @@
                 android:layout_height="30dp" />
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_alignParentBottom="true"
                 android:drawableLeft="@drawable/ic_copyright_black_24dp"
                 android:drawablePadding="5dp"
                 android:gravity="center"
+                android:layout_below="@id/button"
                 android:text="Developed by eCareSofTech Pvt. Ltd."
                 android:layout_height="wrap_content" />
         </RelativeLayout>

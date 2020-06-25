@@ -51,7 +51,7 @@
         <item>    LD|Lakshadweep</item>
         <item>    PY|Puducherry</item>
     </string-array>
-    
+
     <string-array name="field_lift_type">
         <item>Auto</item>
         <item>Manual</item>

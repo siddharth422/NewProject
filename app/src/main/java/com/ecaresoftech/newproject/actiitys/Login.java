@@ -104,6 +104,11 @@ public class Login extends AppCompatActivity {
         JsonObject jsonObject=new JsonObject();
         jsonObject.addProperty("name",userName);
         jsonObject.addProperty("pass",passWord);
+        SharedPreferences sp=getSharedPreferences("Auth", MODE_PRIVATE);
+        SharedPreferences.Editor ed =sp.edit();
+        ed.putString("username",userName);
+        ed.putString("password",passWord);
+        ed.apply();
 
         Response_Api response_api= Api_Client.getClient(getApplicationContext()).create(Response_Api.class);
         Call<LoginResponse> call=response_api.Login("json",map,jsonObject);

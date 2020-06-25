@@ -19,7 +19,10 @@ import retrofit2.http.Url;
 
 public interface Response_Api {
 
-
+    @POST("/web/node")
+    Call<ResponseBody> CreateUser(@Query("_format") String value,
+                                  @HeaderMap HashMap<String, String> hashMap,
+                                  @Body JsonObject requestBody);
 
     @POST("/web/user/login")
     Call<LoginResponse> Login(@Query("_format") String value,

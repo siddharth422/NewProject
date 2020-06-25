@@ -1,12 +1,20 @@
 package com.ecaresoftech.newproject.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ecaresoftech.newproject.DetailActivity;
 import com.ecaresoftech.newproject.R;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,10 +27,15 @@ public class DashBoard extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    @BindView(R.id.liftregister)
+    CardView liftregister;
+    @BindView(R.id.listlift)
+    CardView listlift;
+    Unbinder unbinder;
 
     //TODO: Rename and change types of parameters
-      private String mParam1;
-      private String mParam2;
+    private String mParam1;
+    private String mParam2;
 
     public DashBoard() {
         // Required empty public constructor
@@ -59,6 +72,25 @@ public class DashBoard extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dash_board, container, false);
+        View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
+        unbinder = ButterKnife.bind(this, view);
+        return view;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
+    }
+
+    @OnClick({R.id.liftregister, R.id.listlift})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.liftregister:
+                startActivity(new Intent(getActivity(), DetailActivity.class).putExtra("open", "LiftRegister"));
+                break;
+            case R.id.listlift:
+                break;
+        }
     }
 }
