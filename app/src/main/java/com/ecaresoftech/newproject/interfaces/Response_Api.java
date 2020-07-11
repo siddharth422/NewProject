@@ -33,6 +33,10 @@ public interface Response_Api {
     Call<ResponseBody> Logout(@Query("_format") String value,
                               @HeaderMap Map<String, String> map);
 
+    @GET("/web/rest_example/get/node/lift_registration")
+    Call<ResponseBody> Listlift(@Query("_format") String value,
+                              @HeaderMap Map<String, String> map);
+
 
 
 

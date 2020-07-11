@@ -75,6 +75,7 @@ public class DashBoard extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dash_board, container, false);
         unbinder = ButterKnife.bind(this, view);
         return view;
+
     }
 
     @Override
@@ -83,6 +84,7 @@ public class DashBoard extends Fragment {
         unbinder.unbind();
     }
 
+
     @OnClick({R.id.liftregister, R.id.listlift})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -90,6 +92,7 @@ public class DashBoard extends Fragment {
                 startActivity(new Intent(getActivity(), DetailActivity.class).putExtra("open", "LiftRegister"));
                 break;
             case R.id.listlift:
+                startActivity(new Intent(getActivity(), DetailActivity.class).putExtra("open", "listlift"));
                 break;
         }
     }

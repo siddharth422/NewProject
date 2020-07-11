@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.ecaresoftech.newproject.fragments.LiftRegister;
+import com.ecaresoftech.newproject.fragments.ListLifts;
 
 public class DetailActivity extends AppCompatActivity {
     FragmentTransaction fragmentTransaction;
@@ -48,7 +49,16 @@ public class DetailActivity extends AppCompatActivity {
                 LiftRegister fragment = new LiftRegister();
                 fragmentTransaction.replace(R.id.framelayout, fragment);
                 fragmentTransaction.commit();
-                 break;
+                break;
+
+            case"listlift":
+                setTitle("Lift List");
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                ListLifts listLifts = new ListLifts();
+                fragmentTransaction.replace(R.id.framelayout, listLifts);
+                fragmentTransaction.commit();
+                break;
 
 
 
