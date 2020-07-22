@@ -14,7 +14,11 @@
     <color name="grey">#e0e0e0</color>
     <color name="colorConAct">#FF263644</color>
     <color name="sdas"></color>
+    <color name="album_title">#4c4c4c</color>
+    <color name="editText">#de8f8e8e</color>
 
+    <color name="green">#1B5E20</color>
+    <color name="red">#B71C1C</color>
 
     <color name="colorRedPrimary">#f44336</color>
     <color name="colorPurplePrimary">#9c27b0</color>

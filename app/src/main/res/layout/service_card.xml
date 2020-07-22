@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        app:cardCornerRadius="10dp"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
+
+
+            <RelativeLayout
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/topline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/lead_id"
+                    android:text="Site Name :"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/sitename"
+                    android:text="-"
+                    android:layout_marginLeft="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/lead_id" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_alignStart="@id/topline"
+                android:layout_alignLeft="@id/topline"
+                android:id="@+id/middle_line"
+                android:layout_below="@id/topline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/name"
+                    android:text="Service Mode :"
+                    android:textStyle="bold"
+                    android:layout_marginRight="13dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/type"
+                    android:layout_width="wrap_content"
+                    android:layout_alignBaseline="@id/name"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/name"
+                    android:text="-"
+                    android:textStyle="bold" />
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_alignStart="@id/topline"
+                android:layout_alignLeft="@id/topline"
+                android:id="@+id/middle_second"
+                android:layout_below="@id/middle_line"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <TextView
+                    android:id="@+id/source"
+                    android:text="Service Payment :"
+                    android:textStyle="bold"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_marginTop="5dp"
+                    android:id="@+id/servicepayment"
+                    android:layout_toRightOf="@id/source"
+                    android:text="-"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/middle_third"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/middle_second"
+                android:layout_alignStart="@id/topline"
+                android:layout_alignLeft="@id/topline"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:id="@+id/addedby"
+                    android:layout_marginTop="5dp"
+                    android:text="Last Service Date:"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/lastservicedate"
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/addedby"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@id/addedby"
+                    android:text="-" />
+
+                <TextView
+                    android:text="Active"
+                    android:layout_alignBaseline="@id/addedby"
+                    android:textStyle="bold"
+                    android:id="@+id/active"
+                    android:visibility="invisible"
+                    android:layout_marginRight="25dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_below="@id/addedby"
+                    android:layout_alignBaseline="@id/renew"
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:text="Payment Date :"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_below="@id/addedby"
+                    android:id="@+id/paymentdate"
+                    android:layout_alignBaseline="@id/renew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@id/status"
+                    android:text="-" />
+
+                <TextView
+                    android:layout_below="@id/addedby"
+                    android:id="@+id/renew"
+                    android:layout_alignParentRight="true"
+                    android:text="Renew"
+                    android:visibility="invisible"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:layout_marginRight="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:background="@color/green"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

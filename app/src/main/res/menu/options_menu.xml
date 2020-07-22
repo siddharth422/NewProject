@@ -5,10 +5,6 @@
         android:id="@+id/amcadd"
         android:title="Add AMC and Warranty" />
 
-    <item
-        android:id="@+id/serviceadd"
-        android:title="Add Service" />
-
 
 
 </menu>     

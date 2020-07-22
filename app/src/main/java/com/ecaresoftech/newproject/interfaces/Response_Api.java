@@ -19,25 +19,30 @@ import retrofit2.http.Url;
 
 public interface Response_Api {
 
-    @POST("/web/node")
+    @POST("/node")
     Call<ResponseBody> CreateUser(@Query("_format") String value,
                                   @HeaderMap HashMap<String, String> hashMap,
                                   @Body JsonObject requestBody);
 
-    @POST("/web/user/login")
+    @POST("/user/login")
     Call<LoginResponse> Login(@Query("_format") String value,
                               @HeaderMap HashMap<String, String> hashMap,
                               @Body JsonObject jsonObject);
 
-    @POST("/web/user/logout")
+    @POST("/user/logout")
     Call<ResponseBody> Logout(@Query("_format") String value,
                               @HeaderMap Map<String, String> map);
 
-    @GET("/web/rest_example/get/node/lift_registration")
+    @GET("/rest_example/get/node/lift_registration")
     Call<ResponseBody> Listlift(@Query("_format") String value,
                               @HeaderMap Map<String, String> map);
 
+    @GET("/rest_example/get/node/warranty_amc")
+    Call<ResponseBody> WarrantAmc(@Query("_format") String value,
+                                @HeaderMap Map<String, String> map);
 
-
+    @GET("/rest_example/get/node/services")
+    Call<ResponseBody> ServiceList(@Query("_format") String value,
+                                  @HeaderMap Map<String, String> map);
 
 }

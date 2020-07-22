@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,21 +15,27 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.ecaresoftech.newproject.DetailActivity;
 import com.ecaresoftech.newproject.MainActivity;
 import com.ecaresoftech.newproject.R;
 import com.ecaresoftech.newproject.poja.LiftResponse;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LiftAdapter extends RecyclerView.Adapter<LiftAdapter.MyHolder>  {
     String url;
-    ArrayList<LiftResponse> arrayList;
+    ArrayList<LiftResponse> list;
+    List<LiftResponse> arraylist = new ArrayList<>();
     Context context;
     AlertDialog.Builder alertDialog;
     Dialog dialog;
@@ -42,11 +50,13 @@ public class LiftAdapter extends RecyclerView.Adapter<LiftAdapter.MyHolder>  {
     }
 
     public LiftAdapter(ArrayList<LiftResponse> arrayList, Context context) {
-        this.arrayList = arrayList;
+        this.list = arrayList;
         this.context = context;
+        this.arraylist.addAll(arrayList);
     }
     public void setList(ArrayList<LiftResponse> list) {
-        this.arrayList = list;
+        this.list = list;
+        this.arraylist.addAll(list);
         notifyDataSetChanged();
     }
     @Override
@@ -59,7 +69,7 @@ public class LiftAdapter extends RecyclerView.Adapter<LiftAdapter.MyHolder>  {
 
     @Override
     public void onBindViewHolder(final LiftAdapter.MyHolder holder, final int position) {
-            final LiftResponse usersItem = arrayList.get(position);
+            final LiftResponse usersItem = list.get(position);
 
         if (position%2==0)
         {
@@ -87,14 +97,7 @@ public class LiftAdapter extends RecyclerView.Adapter<LiftAdapter.MyHolder>  {
                         public boolean onMenuItemClick(MenuItem item) {
                             switch (item.getItemId()) {
                                 case R.id.amcadd:
-
-
-
-                                    break;
-                                case R.id.serviceadd:
-
-
-                                    //handle menu2 click
+                                    context.startActivity(new Intent(context, DetailActivity.class).putExtra("open","Addwarranty"));
                                     break;
                             }
                             return false;
@@ -109,9 +112,11 @@ public class LiftAdapter extends RecyclerView.Adapter<LiftAdapter.MyHolder>  {
     }
 
 
+
+
     @Override
     public int getItemCount() {
-        return arrayList == null ? 0 : arrayList.size();
+        return list == null ? 0 : list.size();
     }
 
 
@@ -143,7 +148,26 @@ public class LiftAdapter extends RecyclerView.Adapter<LiftAdapter.MyHolder>  {
             });
         }
     }
+    public void filter(String charText) {
+        try {
+            charText = charText.toLowerCase(Locale.getDefault());
+            list.clear();
+            if (charText.length() == 0) {
+                list.addAll(arraylist);
+            } else {
+                for (LiftResponse wp : arraylist) {
+                    if (wp.getTitle().toLowerCase(Locale.getDefault()).contains(charText)) {
+                        list.add(wp);
+                    }
+                }
+            }
+            notifyDataSetChanged();
+        }catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
+    }
 
 }
 

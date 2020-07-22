@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.ecaresoftech.newproject.fragments.AddWarranty;
 import com.ecaresoftech.newproject.fragments.LiftRegister;
 import com.ecaresoftech.newproject.fragments.ListLifts;
 
@@ -57,6 +58,15 @@ public class DetailActivity extends AppCompatActivity {
                 fragmentTransaction = fragmentManager.beginTransaction();
                 ListLifts listLifts = new ListLifts();
                 fragmentTransaction.replace(R.id.framelayout, listLifts);
+                fragmentTransaction.commit();
+                break;
+
+            case "Addwarranty":
+                setTitle("Add Warranty AMC");
+                fragmentManager = getSupportFragmentManager();
+                fragmentTransaction = fragmentManager.beginTransaction();
+                AddWarranty addWarranty = new AddWarranty();
+                fragmentTransaction.replace(R.id.framelayout, addWarranty);
                 fragmentTransaction.commit();
                 break;
 

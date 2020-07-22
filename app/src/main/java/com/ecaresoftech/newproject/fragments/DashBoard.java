@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.ecaresoftech.newproject.AmcWarrantyTab;
 import com.ecaresoftech.newproject.DetailActivity;
 import com.ecaresoftech.newproject.R;
 
@@ -32,6 +33,8 @@ public class DashBoard extends Fragment {
     @BindView(R.id.listlift)
     CardView listlift;
     Unbinder unbinder;
+    @BindView(R.id.warrentycard)
+    CardView warrentycard;
 
     //TODO: Rename and change types of parameters
     private String mParam1;
@@ -95,5 +98,11 @@ public class DashBoard extends Fragment {
                 startActivity(new Intent(getActivity(), DetailActivity.class).putExtra("open", "listlift"));
                 break;
         }
+    }
+
+    @OnClick(R.id.warrentycard)
+    public void onViewClicked() {
+        startActivity(new Intent(getActivity(), AmcWarrantyTab.class));
+
     }
 }

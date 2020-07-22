@@ -95,7 +95,7 @@
             </android.support.v7.widget.CardView>
         </LinearLayout>
 
-       <!-- <LinearLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="194dp"
             android:layout_marginTop="10dp"
@@ -103,7 +103,7 @@
             android:orientation="horizontal">
 
             <android.support.v7.widget.CardView
-                android:id="@+id/followup_card"
+                android:id="@+id/warrentycard"
                 android:layout_width="0dp"
                 android:layout_height="190dp"
                 android:layout_marginStart="10dp"
@@ -115,7 +115,7 @@
                 app:cardCornerRadius="10dp">
 
                 <RelativeLayout
-                    android:id="@+id/addcustomer"
+                    android:id="@+id/warrantyservicelist1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="visible">
@@ -123,10 +123,10 @@
                     <ImageView
                         android:id="@+id/followup"
                         android:layout_width="match_parent"
-                        android:layout_height="150dp"
+                        android:layout_height="140dp"
                         android:background="?android:attr/selectableItemBackground"
                         android:scaleType="center"
-                        android:src="@drawable/folowup" />
+                        android:src="@drawable/leads_image" />
 
                     <TextView
                         android:id="@+id/textview3"
@@ -134,7 +134,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/followup"
                         android:gravity="center"
-                        android:text="Follow Ups"
+                        android:text="Warranty
+                        Service List"
                         android:textColor="#000"
                         android:textSize="18sp" />
 
@@ -148,6 +149,7 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="10dp"
+                android:visibility="invisible"
                 android:layout_weight="1"
                 android:onClick="Sadasya_Dikhaye"
                 app:cardBackgroundColor="#fff"
@@ -162,8 +164,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:background="?android:attr/selectableItemBackground"
-                        android:scaleType="center"
-                        android:src="@drawable/sale_image" />
+                        android:scaleType="center" />
 
                     <TextView
                         android:id="@+id/textview4"
@@ -176,6 +177,6 @@
                         android:textSize="18sp" />
                 </RelativeLayout>
             </android.support.v7.widget.CardView>
-        </LinearLayout>-->
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>

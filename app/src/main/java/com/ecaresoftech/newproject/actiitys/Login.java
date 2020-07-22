@@ -86,12 +86,9 @@ public class Login extends AppCompatActivity {
             LoginFun(userName,passWord);
         }
 
-
     }
 
     private void LoginFun(String userName, String passWord) {
-
-
         final ProgressDialog progress;
         progress = new ProgressDialog(this);
         progress.setTitle("Please Wait!!");

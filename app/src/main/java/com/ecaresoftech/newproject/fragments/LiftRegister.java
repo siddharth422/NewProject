@@ -12,8 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
@@ -38,7 +36,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 import butterknife.BindView;
@@ -107,6 +104,8 @@ public class LiftRegister extends Fragment {
     Unbinder unbinder;
     @BindView(R.id.city)
     TextInputEditText city;
+    @BindView(R.id.servicemode)
+    Spinner servicemode;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -160,13 +159,13 @@ public class LiftRegister extends Fragment {
             }
         });
         context = view.getContext();
-       // callAll();
+        // callAll();
         return view;
     }
 
     public void callAll() {
         obj_list();
-      //  setSpinner();
+        //  setSpinner();
     }
 
     @Override
@@ -195,7 +194,7 @@ public class LiftRegister extends Fragment {
 
     private void validation() {
         String siteName, addressstr, areastr, contactpersonstr, contactnumberstr, liftNostr, dateoforderstr, dateofcompetionstr,
-                liftcapacitystr, doorsizestr, lifttypestr, geartypestr, fieldconsstr, liftversionstr, totalamountstr;
+                liftcapacitystr, doorsizestr, lifttypestr, geartypestr, fieldconsstr, liftversionstr, totalamountstr,service_mode;
         siteName = sitename.getText().toString();
         addressstr = address.getText().toString();
         areastr = area.getText().toString();
@@ -211,11 +210,12 @@ public class LiftRegister extends Fragment {
         fieldconsstr = fieldCons.getSelectedItem().toString();
         liftversionstr = fieldLift.getSelectedItem().toString();
         totalamountstr = totalpayment.getText().toString();
-        citystring=city.getText().toString();
+        citystring = city.getText().toString();
+        service_mode=servicemode.getSelectedItem().toString();
 
-        state_string= indiaStates.getSelectedItem().toString();
-          int i=indiaStates.getSelectedItemPosition();
-           state_string =String.valueOf(key.get(i));
+        state_string = indiaStates.getSelectedItem().toString();
+        int i = indiaStates.getSelectedItemPosition();
+        state_string = String.valueOf(key.get(i));
 
 
         if (siteName.equals("")) {
@@ -240,7 +240,7 @@ public class LiftRegister extends Fragment {
                     contactnumberstr,
                     contactpersonstr,
                     addressstr,
-                    siteName, areastr, state_string, citystring);
+                    siteName, areastr, state_string, citystring,service_mode);
         }
 
 
@@ -266,7 +266,7 @@ public class LiftRegister extends Fragment {
                       String lifttypestr, String doorsizestr, String liftcapacitystr,
                       String dateofcompetionstr, String dateoforderstr, String liftNostr,
                       String contactnumberstr, String contactpersonstr, String addressstr,
-                      String siteName, String areastr, String state_string, String citystring) {
+                      String siteName, String areastr, String state_string, String citystring,String service_mode) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("Login", MODE_PRIVATE);
         String token = sharedPreferences.getString("crftoken", "");
         final ProgressDialog progress;
@@ -292,6 +292,7 @@ public class LiftRegister extends Fragment {
         jsonObject.add("field_door_size", maker(doorsizestr));
         jsonObject.add("field_lift_type", maker(lifttypestr.toLowerCase()));
         jsonObject.add("field_gear_type", maker(geartypestr.toLowerCase()));
+        jsonObject.add("field_service_mode",maker(service_mode));
         if (fieldconsstr.equals("Mild Steel")) {
             jsonObject.add("field_cons", maker("mild_steel"));
         } else {
